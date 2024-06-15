@@ -20,7 +20,7 @@ class MaterialFactory extends Factory
             //
             'name' => fake()->words(3,true),
             'quantity' => fake()->numberBetween(0, 100),
-            'unit' => fake()->randomElement([null,'cm','per person'])
+            'unit' => fake()->randomElement(['cm','per person']),
         ];
     }
 }
