@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('quantity');
             $table->string('unit')->nullable();
-            $table->morphs('materialable');
+            $table->foreignId('manual_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

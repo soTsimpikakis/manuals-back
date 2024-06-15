@@ -32,6 +32,6 @@ class Manual extends Model
     }
 
     public function materials() {
-        return $this->morphMany(Material::class, 'materialable');
+        return $this->hasMany(Material::class);
     }
 }

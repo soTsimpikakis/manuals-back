@@ -16,7 +16,7 @@ class Material extends Model
         'unit'
     ];
 
-    public function materialable() {
-        return $this->morphTo();
+    public function manual() {
+        return $this->belongsTo(Manual::class);
     }
 }

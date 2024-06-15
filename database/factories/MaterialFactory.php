@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Manual;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class MaterialFactory extends Factory
             'name' => fake()->words(3,true),
             'quantity' => fake()->numberBetween(0, 100),
             'unit' => fake()->randomElement(['cm','per person']),
+            'manual_id' => Manual::factory()
         ];
     }
 }

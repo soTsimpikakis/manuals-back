@@ -19,21 +19,21 @@ class MaterialTest extends TestCase
 
     /** @test */
     public function a_material_has_a_name() {
-        $mat = Material::factory()->for($this->manual, 'materialable')->createOne();
+        $mat = Material::factory()->for($this->manual)->createOne();
 
         $this->assertNotEmpty($mat->name);
     }
 
     /** @test */
     public function a_material_has_a_quantity() {
-        $mat = Material::factory()->for($this->manual, 'materialable')->createOne();
+        $mat = Material::factory()->for($this->manual)->createOne();
 
         $this->assertNotEmpty($mat->quantity);
     }
 
     /** @test */
     public function a_material_has_a_unit() {
-        $mat = Material::factory()->for($this->manual, 'materialable')->createOne();
+        $mat = Material::factory()->for($this->manual)->createOne();
 
         $this->assertNotEmpty($mat->unit);
     }
