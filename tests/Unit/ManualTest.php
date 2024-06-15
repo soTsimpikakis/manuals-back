@@ -7,18 +7,26 @@ use Tests\TestCase;
 
 class ManualTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     */
-    public function test_example(): void
-    {
-        $this->assertTrue(true);
+    /** @test */
+    public function a_manual_has_a_title() {
+        $manual = Manual::factory()->createOne();
+
+        $this->assertNotEmpty($manual);
     }
 
     /** @test */
-    public function a_manual_has_a_title() {
-        $manual = Manual::factory()->makeOne();
+    public function a_manual_has_a_description() {
+        $manual = Manual::factory()->createOne();
 
-        $this->assertNotEmpty($manual->title);
+        $this->assertNotEmpty($manual->description);
     }
+
+    /** @test */
+    public function a_manual_has_a_duration() {
+        $manual = Manual::factory()->createOne();
+
+        $this->assertNotEmpty($manual->duration);
+    }
+
+
 }

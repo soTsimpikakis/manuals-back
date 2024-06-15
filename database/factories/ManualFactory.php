@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Manual;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ManualFactory extends Factory
 {
+
+    protected $model = Manual::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,8 +21,10 @@ class ManualFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            'title' => $this->faker->words(3)
+            'title' => fake()->words(3, true),
+            'description' => fake()->sentence(),
+            'min_duration' => fake()->numberBetween(5,25),
+            'max_duration' => fake()->numberBetween(15,45),
         ];
     }
 }
