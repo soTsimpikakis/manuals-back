@@ -30,4 +30,8 @@ class Manual extends Model
     public function author() {
         return $this->belongsTo(User::class, 'author_id');
     }
+
+    public function materials() {
+        return $this->morphMany(Material::class, 'materialable');
+    }
 }

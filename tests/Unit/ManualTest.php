@@ -52,4 +52,12 @@ class ManualTest extends TestCase
         $this->assertNotEmpty($manual->author);
     }
 
+    /** @test */
+    public function a_manual_can_have_materials() {
+        $manual = Manual::factory()->hasMaterials(5)->createOne();
+
+
+        $this->assertNotEmpty($manual->materials);
+    }
+
 }
