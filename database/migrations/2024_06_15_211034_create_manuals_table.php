@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('title')->unique();
             $table->integer('min_duration');
             $table->integer('max_duration');
+            $table->json('questions')->nullable();
+
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->foreign('author_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

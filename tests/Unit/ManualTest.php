@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Manual;
+use App\Models\User;
 use Tests\TestCase;
 
 class ManualTest extends TestCase
@@ -28,5 +29,27 @@ class ManualTest extends TestCase
         $this->assertNotEmpty($manual->duration);
     }
 
+    /** @test */
+    public function a_manual_has_some_discussion_questions() {
+        $manual = Manual::factory()->createOne();
+
+        $this->assertNotEmpty($manual->questions);
+        $this->assertGreaterThan(0, count($manual->questions));
+    }
+
+    /** @test */
+    public function a_manual_can_have_no_questions() {
+        $manual = Manual::factory()->createOne([
+            'questions' => null
+        ]);
+
+        $this->assertEmpty($manual->questions);
+    }
+
+    /** @test */
+    public function a_manual_has_an_author() {
+        $manual = Manual::factory()->createOne();
+        $this->assertNotEmpty($manual->author);
+    }
 
 }

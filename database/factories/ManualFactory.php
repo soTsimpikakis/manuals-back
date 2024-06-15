@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Manual;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,6 +26,8 @@ class ManualFactory extends Factory
             'description' => fake()->sentence(),
             'min_duration' => fake()->numberBetween(5,25),
             'max_duration' => fake()->numberBetween(15,45),
+            'questions' => fake()->sentences(),
+            'author_id' => User::factory(),
         ];
     }
 }

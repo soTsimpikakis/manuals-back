@@ -14,11 +14,20 @@ class Manual extends Model
         'description',
         'min_duration',
         'max_duration',
+        'questions',
+    ];
+
+    protected $casts = [
+        'questions' => 'array'
     ];
 
 
 
     public function getDurationAttribute() {
         return $this->min_duration . '-' . $this->max_duration;
+    }
+
+    public function author() {
+        return $this->belongsTo(User::class, 'author_id');
     }
 }
