@@ -57,6 +57,12 @@ class ManualTest extends TestCase
         $manual = Manual::factory()->hasMaterials(5)->createOne();
         $this->assertNotEmpty($manual->materials);
     }
+    /** @test */
+    public function a_manual_can_be_a_draft() {
+        $manual = Manual::factory()->createOne([
+            'is_draft' => true
+        ]);
 
-
+        $this->assertTrue($manual->is_draft);
+    }
 }

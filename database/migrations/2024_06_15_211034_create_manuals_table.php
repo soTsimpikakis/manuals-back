@@ -21,6 +21,9 @@ return new class extends Migration
 
             $table->unsignedBigInteger('author_id')->nullable();
             $table->foreign('author_id')->references('id')->on('users');
+            $table->boolean('is_draft')->default(true);
+
+            $table->index('is_draft','draft_index');
             $table->timestamps();
         });
     }

@@ -28,6 +28,7 @@ class ManualFactory extends Factory
             'max_duration' => fake()->numberBetween(15,45),
             'questions' => fake()->sentences(),
             'author_id' => User::factory(),
+            'is_draft' => fake()->boolean()
         ];
     }
 }

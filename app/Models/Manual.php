@@ -15,6 +15,7 @@ class Manual extends Model
         'min_duration',
         'max_duration',
         'questions',
+        'is_draft'
     ];
 
     protected $casts = [
