@@ -25,16 +25,6 @@ class ManualTest extends TestCase
 
     }
 
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
     /** @test */
     public function a_manual_can_be_created() {
 
@@ -154,7 +144,6 @@ class ManualTest extends TestCase
             'title' => $payload['title']
         ]);
     }
-
 
     /** @test */
     public function a_manual_can_add_a_material() {
