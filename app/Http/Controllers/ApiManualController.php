@@ -12,7 +12,7 @@ class ApiManualController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
     }
@@ -48,7 +48,6 @@ class ApiManualController extends Controller
         //
 
         $manual->update($request->all());
-
         $manual->save();
 
         return response()->json($manual, 200);
