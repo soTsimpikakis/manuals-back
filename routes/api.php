@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('manuals', ApiManualController::class);
+Route::post("/manuals/{manual}/publish", [ApiManualController::class, 'publish']);
 Route::post('manuals/{manual}/materials', [ApiManualController::class, 'addMaterial']);
 Route::delete('manuals/{manual}/materials/{material}', [ApiManualController::class, 'removeMaterial']);
 

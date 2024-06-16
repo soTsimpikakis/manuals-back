@@ -75,4 +75,11 @@ class ApiManualController extends Controller
         $material->delete();
         return response()->json($manual, 204);
     }
+
+    public function publish (Manual $manual) {
+        $manual->is_draft = false;
+        $manual->save();
+
+        return response(status: 201);
+    }
 }

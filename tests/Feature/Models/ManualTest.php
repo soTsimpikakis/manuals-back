@@ -181,4 +181,16 @@ class ManualTest extends TestCase
 
         $this->assertDatabaseMissing('materials', ['id' => $mat->id]);
     }
+
+    /** @test */
+    public function a_manual_can_be_published() {
+        $manual = Manual::factory()->createOne();
+
+        $this->post("/api/manuals/$manual->id/publish")->assertStatus(201);
+
+        $this->assertDatabaseHas('manuals', [
+            'id' => $manual->id,
+            'is_draft' => false
+        ]);
+    }
 }
