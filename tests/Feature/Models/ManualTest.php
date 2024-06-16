@@ -170,12 +170,13 @@ class ManualTest extends TestCase
 
         $this->assertCount(6, $manual->materials);
 
-        $this->delete("/api/manuals/$manual->id/materials/$mat->id")->assertStatus(204);
+        $res = $this->delete("/api/manuals/$manual->id/materials/$mat->id")
+            ->assertStatus(204);
 
+        $m = $res->getOriginalContent();
+
+        $this->assertCount(5, $m->materials);
 
         $this->assertDatabaseMissing('materials', ['id' => $mat->id]);
-
-
-
     }
 }

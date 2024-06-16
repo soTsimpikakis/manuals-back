@@ -75,6 +75,6 @@ class ApiManualController extends Controller
 
         $material->delete();
 
-        return response('', 204);
+        return response()->json($manual, 204);
     }
 }
