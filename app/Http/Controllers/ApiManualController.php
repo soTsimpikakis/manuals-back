@@ -65,4 +65,16 @@ class ApiManualController extends Controller
 
         return response('', 204);
     }
+
+    public function addMaterial (Request $request, Manual $manual) {
+        $material = $manual->materials()->create($request->all());
+        return response()->json($material, 201);
+    }
+
+    public function removeMaterial (Manual $manual, Material $material) {
+
+        $material->delete();
+
+        return response('', 204);
+    }
 }

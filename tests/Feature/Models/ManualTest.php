@@ -142,9 +142,38 @@ class ManualTest extends TestCase
         ]);
     }
 
+
     /** @test */
-    public function a_manual_can_update_its_materials() {
-        $manual = Manual::factory()->hasMaterials(3)->createOne();
+    public function a_manual_can_add_a_material() {
+
+        $manual = Manual::factory()->hasMaterials(5)->createOne();
+
+        $payload = $this->genMaterials(parent: $manual, count: 1)[0];
+
+        $this->post("/api/manuals/$manual->id/materials", $payload);
+
+        $manual->load(['materials']);
+
+        $this->assertCount(6, $manual->materials);
+
+        $this->assertDatabaseHas('materials', $payload);
+
+    }
+
+    /** @test */
+    public function a_manual_can_remove_a_material() {
+
+        $manual = Manual::factory()->hasMaterials(5)->createOne();
+
+        $mat = Material::factory()->for($manual)->createOne();
+
+
+        $this->assertCount(6, $manual->materials);
+
+        $this->delete("/api/manuals/$manual->id/materials/$mat->id")->assertStatus(204);
+
+
+        $this->assertDatabaseMissing('materials', ['id' => $mat->id]);
 
 
 
