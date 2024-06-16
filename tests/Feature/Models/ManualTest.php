@@ -122,6 +122,19 @@ class ManualTest extends TestCase
     }
 
     /** @test */
+    public function a_manual_can_be_deleted_with_its_materials() {
+        $manual = Manual::factory()->hasMaterials(5)->createOne();
+
+        $this->assertDatabaseCount('manuals', 1);
+        $this->assertDatabaseCount('materials', 5);
+
+        $this->delete("/api/manuals/$manual->id");
+
+        $this->assertDatabaseEmpty('manuals');
+        $this->assertDatabaseEmpty('materials');
+    }
+
+    /** @test */
     public function a_manual_can_be_updated() {
         $manual = Manual::factory()->createOne();
 

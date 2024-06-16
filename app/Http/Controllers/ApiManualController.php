@@ -72,9 +72,7 @@ class ApiManualController extends Controller
     }
 
     public function removeMaterial (Manual $manual, Material $material) {
-
         $material->delete();
-
         return response()->json($manual, 204);
     }
 }
