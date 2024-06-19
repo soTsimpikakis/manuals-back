@@ -26,6 +26,8 @@ class ImportManualTest extends TestCase
 
         dd($text, $details);
 
+        // Διαδικασία:(.|\n)+?Θ
+
         $this->assertTrue(true);
     }
 }
