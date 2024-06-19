@@ -15,6 +15,9 @@ class ApiManualController extends Controller
     public function index(Request $request)
     {
         //
+        $manuals = Manual::all();
+
+        return response()->json($manuals);
     }
 
     /**
@@ -38,6 +41,7 @@ class ApiManualController extends Controller
     public function show(Manual $manual)
     {
         //
+        return response()->json($manual);
     }
 
     /**

@@ -190,5 +190,25 @@ class ManualTest extends TestCase
         ]);
     }
 
+    /** @test */
+    public function a_manual_can_be_overviewed() {
+        $manual = Manual::factory()->createOne();
+
+        $this->get("/api/manuals/$manual->id")->assertStatus(200)->assertJson([
+            'id' => $manual->id
+        ]);
+    }
+
+
+    /** @test */
+    public function manuals_can_be_fetched() {
+        Manual::factory(10)->create();
+
+
+        $this->get("/api/manuals")
+            ->assertStatus(200)
+            ->assertJsonIsArray()
+            ->assertJsonCount(10);
+    }
 
 }
