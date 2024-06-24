@@ -4,13 +4,21 @@ namespace Tests\Unit;
 
 use Illuminate\Support\Str;
 use App\Models\Manual;
+use App\Services\ManualImportService;
 use Illuminate\Support\Facades\Storage;
 use Smalot\PdfParser\Parser;
 use Tests\TestCase;
 
 class ImportManualTest extends TestCase
 {
-    /** @test */
+    protected ManualImportService $importService;
+
+    protected function setUp(): void {
+        parent::setUp();
+
+        $this->importService = new ManualImportService();
+    }
+
     public function a_pdf_can_be_imported() {
         $file = Storage::get('public/Traffic Jam.pdf');
         ini_set('memory_limit', '2G');
@@ -49,5 +57,16 @@ class ImportManualTest extends TestCase
         dd($manual);
 
         $this->assertTrue(true);
+    }
+
+    /** @test */
+    public function can_import_a_pdf() {
+        $path = storage_path('app/public/Traffic Jam.pdf');
+
+        // dd($path);
+        $this->importService->importFromPdf($path);
+
+        $this->assertTrue(true);
+
     }
 }
